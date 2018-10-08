@@ -10,8 +10,8 @@ import { schemeSet1 } from 'd3-scale-chromatic';
 
 
 const taskcount =[
-  { task: 'New', frequency:20 },
-  { task: 'Started', frequency:40 },
+  { task: 'New', frequency:30 },
+  { task: 'Started', frequency:50 },
   { task: 'Done', frequency:76  },
   { task: 'Overdue', frequency:314 },
   { task: 'Discarded', frequency:65 },

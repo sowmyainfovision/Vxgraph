@@ -11,8 +11,8 @@ import { extent } from 'd3-array';
 
 
 const Task =[
-    { task: 'New', frequency:20 },
-    { task: 'Started', frequency:40 },
+    { task: 'New', frequency:30 },
+    { task: 'Started', frequency:50 },
     { task: 'Done', frequency:76  },
     { task: 'Overdue', frequency:314 },
     { task: 'Discarded', frequency:65 },
@@ -62,21 +62,34 @@ const margin = { top: 20, bottom: 20, left: 20, right: 20 }
      <Pie
           data={Task}
           pieValue={d => d.frequency}
-          outerRadius={radius - 80}
-          innerRadius={radius - 140}
+          outerRadius={radius - 50}
+          innerRadius={radius - 120}
           fill="#e2f442"
           fillOpacity={d => 1 / (d.index + 2) }
           cornerRadius={3}
           stroke="white"
-          strokeWidth={0.5}
+          strokeWidth={0.7}
           padAngle={0}
           centroid={(centroid, arc) => {
                         const [x, y] = centroid;
                         const { startAngle, endAngle } = arc;
             if (endAngle - startAngle < .1) return null;
-                        return <Label x={x} y={y}>{arc.data.task}  :   {arc.data.frequency} </Label>;
+                        return <Label x={x} y={y}> {arc.data.task} </Label>;
+                         
                                   }}
                                       />
+
+                                      <Pie
+          data={Task}
+          pieValue={d => d.frequency}
+          outerRadius={radius - 135}
+          fill="white"
+          fillOpacity={d => 1 / (d.index + 2) }
+          centroid={(centroid, arc) => {
+            const [x, y] = centroid;
+            return <Label x={x} y={y}>{arc.data.frequency}</Label>;
+          }}
+        />
        </Group>
         
     </svg>
